@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -6,13 +7,19 @@ import 'package:maps_flutter/screens/GpsScreen.dart';
 import 'package:maps_flutter/screens/HomeScreen.dart';
 import 'package:maps_flutter/screens/LocationEnableScreen.dart';
 import 'package:maps_flutter/screens/OnboardScreen.dart';
-import 'package:maps_flutter/screens/OnboardingScreen.dart';
 import 'package:maps_flutter/screens/StartupScreen.dart';
 import 'package:maps_flutter/screens/WeatherLayersScreen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (kReleaseMode) {
+    await dotenv.load(fileName: ".env.production");
+  } else {
+    await dotenv.load(fileName: ".env.development");
+  }
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+  // dotenv.load();
   runApp(const MyApp());
 }
 

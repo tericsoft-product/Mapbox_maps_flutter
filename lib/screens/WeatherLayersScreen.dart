@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 
 class WeatherLayersScreen extends StatefulWidget {
@@ -34,6 +35,11 @@ class _WeatherLayersScreenState extends State<WeatherLayersScreen> {
     _initializeWeatherLayer();
   }
 
+  static String getApiKey() {
+    print('${dotenv.env['WEATHER_API']} vserf sefser fer');
+    return dotenv.env['WEATHER_API'] ?? '';
+  }
+
   Future<void> _initializeWeatherLayer() async {
     try {
       // Add the source
@@ -41,7 +47,7 @@ class _WeatherLayersScreenState extends State<WeatherLayersScreen> {
         RasterSource(
           id: "weather-source",
           tiles: [
-            "https://tile.openweathermap.org/map/$currentLayer/{z}/{x}/{y}.png?appid=87471ac76123f9db573c3fdfb1882cdd",
+            "https://tile.openweathermap.org/map/$currentLayer/{z}/{x}/{y}.png?appid=${getApiKey()}",
           ],
         ),
       );
