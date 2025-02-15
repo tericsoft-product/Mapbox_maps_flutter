@@ -5,11 +5,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>We need your location to provide nearby services.</string>
+<string>We need your location to find nearby friends</string>
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>We need your location to find nearby friends</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>We need your location to provide nearby services even when the app is not in use.</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>We need your location to provide nearby services at all times.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Maps Flutter</string>
 	<key>CFBundleExecutable</key>

@@ -55,21 +55,32 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen>
   }
 
   Future<void> _requestLocationPermission() async {
-    final status = await Permission.location.request();
+    // First check the current permission status
+    final status = await Permission.location.status;
+    print('${status.isDenied} mnmnmnmnmn');
 
-    if (status.isGranted) {
+    if (status.isDenied) {
+      // If permission is denied but not permanently, request it
+      final result = await Permission.location.request();
+      if (result.isGranted) {
+        setState(() {
+          _isPermissionGranted = true;
+        });
+        _animationController.forward();
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Location permission is required.')),
+        );
+      }
+    } else if (status.isPermanentlyDenied) {
+      // Only open settings if permanently denied
+      openAppSettings();
+    } else if (status.isGranted) {
+      // Permission is already granted
       setState(() {
         _isPermissionGranted = true;
       });
-
-      // Start animation for showing JSON
       _animationController.forward();
-    } else if (status.isPermanentlyDenied) {
-      openAppSettings(); // Open app settings if permission is permanently denied
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Location permission is required.')),
-      );
     }
   }
 
