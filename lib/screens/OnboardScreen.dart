@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:maps_flutter/screens/HomeScreen.dart';
 import 'package:maps_flutter/screens/LocationEnableScreen.dart';
 
 class OnboardContent {
@@ -151,8 +152,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           borderRadius: BorderRadius.circular(27),
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (_) =>
-                                    const LocationPermissionScreen()));
+                                builder: (_) => const HomeScreen()));
                           },
                           child: const Center(
                             child: Text(

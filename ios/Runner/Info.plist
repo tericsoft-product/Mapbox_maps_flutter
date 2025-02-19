@@ -2,14 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-<string>We need your location to find nearby friends</string>
-<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-<string>We need your location to find nearby friends</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>We need your location to provide nearby services even when the app is not in use.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Maps Flutter</string>
 	<key>CFBundleExecutable</key>
@@ -30,6 +26,18 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MBXAccessToken</key>
+	<string>pk.eyJ1Ijoic2FudGhvc2h0ZXJpY3NvZnQiLCJhIjoiY200cjBlZjhnMTc4ejJtcXM1N215dWMydSJ9.P2SDbnCkX9O7wwaJSClvVg</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need your location to find nearby friends</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location to provide nearby services even when the app is not in use.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Need permissions to enable all features.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to find nearby friends</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -47,9 +55,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
 </dict>
 </plist>

@@ -55,12 +55,21 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen>
   }
 
   Future<void> _requestLocationPermission() async {
-    // First check the current permission status
+    // First check if location services are enabled at device level
+    if (!await Permission.location.serviceStatus.isEnabled) {
+      // Location services are disabled at device level
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text(
+                'Please enable location services in your device settings')),
+      );
+      return;
+    }
+
     final status = await Permission.location.status;
-    print('${status.isDenied} mnmnmnmnmn');
 
     if (status.isDenied) {
-      // If permission is denied but not permanently, request it
+      // Request permission
       final result = await Permission.location.request();
       if (result.isGranted) {
         setState(() {
@@ -68,15 +77,53 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen>
         });
         _animationController.forward();
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Location permission is required.')),
+        // Show dialog explaining why location is needed
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Location Access Required'),
+            content: const Text(
+                'Please enable location access in your device settings to find nearby friends.'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () {
+                  openAppSettings();
+                  Navigator.pop(context);
+                },
+                child: const Text('Open Settings'),
+              ),
+            ],
+          ),
         );
       }
     } else if (status.isPermanentlyDenied) {
-      // Only open settings if permanently denied
-      openAppSettings();
+      // Show dialog to guide user to settings
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Location Access Required'),
+          content: const Text(
+              'Please enable location access in your device settings to find nearby friends.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                openAppSettings();
+                Navigator.pop(context);
+              },
+              child: const Text('Open Settings'),
+            ),
+          ],
+        ),
+      );
     } else if (status.isGranted) {
-      // Permission is already granted
       setState(() {
         _isPermissionGranted = true;
       });
