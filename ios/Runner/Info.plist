@@ -29,13 +29,13 @@
 	<key>MBXAccessToken</key>
 	<string>pk.eyJ1Ijoic2FudGhvc2h0ZXJpY3NvZnQiLCJhIjoiY200cjBlZjhnMTc4ejJtcXM1N215dWMydSJ9.P2SDbnCkX9O7wwaJSClvVg</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We need your location to find nearby friends</string>
+	<string>Maps Flutter</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need your location to provide nearby services even when the app is not in use.</string>
+	<string>Maps Flutter</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Need permissions to enable all features.</string>
+	<string>App would like to access your location to track the user's location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need your location to find nearby friends</string>
+	<string>App would like to access your location to track the user's location</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
